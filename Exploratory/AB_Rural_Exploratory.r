@@ -32,7 +32,7 @@ head(data)
 rural <- read.csv('/Users/michaelwilliams/Documents/MGH T32/Research/AB/Analysis/AB_Rural/Analytic Dataset/AB_Rural_Analytic.csv')
 colnames(rural)[colnames(rural) == "USER_record_id"] <- "record_id"
 dim(rural)
-head(rural)
+#head(rural)
 names(rural)
 
 #Merge the data
@@ -52,6 +52,8 @@ sum(!is.na(merged_data$PrimaryRUCADescription))
 merged_data$rural_binary <- ifelse(merged_data$PrimaryRUCA <= 3, 0, 1)
 
 table(merged_data$rural_binary, useNA = "always")
+
+table(merged_data$UrbanCoreType, useNA = "always")
 
 #Two participants have an NA RUCA code. 1 is a PO box that likely didn't geocode properly, other is truly missing an address
 merged_data %>%
